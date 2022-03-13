@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-final public class Location {
+public class Location {
     private final int locationID;
     private final String description;
     private final Map<String, Integer> exits;
@@ -9,10 +9,11 @@ final public class Location {
     public Location(int locationID, String description, Map<String, Integer> exits) {
         this.locationID = locationID;
         this.description = description;
-        if(exits != null)
+        if(exits != null) {
             this.exits = new HashMap<String, Integer>(exits);
-        else
+        } else {
             this.exits = new HashMap<String, Integer>();
+        }
         this.exits.put("Q", 0);
     }
 
@@ -20,28 +21,18 @@ final public class Location {
 //        exits.put(direction, location);
 //    }
 
-//    public void setLocationID(int locationID) {
-//        this.locationID = locationID;
-//    }
-
     public int getLocationID() {
         return locationID;
     }
-
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
 
     public String getDescription() {
         return description;
     }
 
-//    public void setExits(Map<String, Integer> exits) {
-//        this.exits = exits;
-//    }
-
     public Map<String, Integer> getExits() {
-        return new HashMap<String,Integer>(exits);
+        return new HashMap<String, Integer>(exits);
     }
-
+    protected void addExit(String direction, int location) {
+        exits.put(direction, location);
+    }
 }
