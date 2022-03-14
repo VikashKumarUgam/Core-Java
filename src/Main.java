@@ -1,63 +1,51 @@
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    private static Locations locations = new Locations();
 
     public static void main(String[] args) {
-        // Change the program to allow players to type full words, or phrases, then move to the
-        // correct location based upon their input.
-        // The player should be able to type commands such as "Go West", "run South", or just "East"
-        // and the program will move to the appropriate location if there is one.  As at present, an
-        // attempt to move in an invalid direction should print a message and remain in the same place.
-        //
-        // Single letter commands (N, W, S, E, Q) should still be available.
+        // Create a suitably named package containing a class called Series with the following static methods:
+        // nSum(int n) returns the sum of all numbers from 0 to n. The first 10 numbers are:
+        //0 1 3 6 10 15 21 28 36 45 55
+        // factorial(int n) returns the product of all the numbers from 1 to n
+        // The first 10 factorials are:
+        // 0 1 2 6 24 120 720 5040 40320 362880 3628800
+        // fibonacci(n) returns the nth Fibonacci number. These are defined as:
+        // f(0) =0 f(1)=1 f(2)=1 f(3)=2
 
-        Scanner scanner = new Scanner(System.in);
-
-        Map<String, String> vocabulary = new HashMap<String, String>();
-        vocabulary.put("QUIT", "Q");
-        vocabulary.put("NORTH", "N");
-        vocabulary.put("SOUTH", "S");
-        vocabulary.put("WEST", "W");
-        vocabulary.put("EAST", "E");
-
-
-        int loc = 64;
-//        int loc = 1;
-        while(true) {
-            System.out.println(locations.get(loc).getDescription());
-
-            if(loc == 0) {
-                break;
-            }
-
-            Map<String, Integer> exits = locations.get(loc).getExits();
-            System.out.print("Available exits are ");
-            for(String exit: exits.keySet()) {
-                System.out.print(exit + ", ");
-            }
-            System.out.println();
-
-            String direction = scanner.nextLine().toUpperCase();
-            if(direction.length() > 1) {
-                String[] words = direction.split(" ");
-                for(String word: words) {
-                    if(vocabulary.containsKey(word)) {
-                        direction = vocabulary.get(word);
-                        break;
-                    }
-                }
-            }
-
-            if(exits.containsKey(direction)) {
-                loc = exits.get(direction);
-
-            } else {
-                System.out.println("You cannot go in that direction");
-            }
+        for(int i=0; i <=10; i++) {
+            System.out.println(Series.nSum(i));
         }
 
+        System.out.println("*****************************");
+        for(int i=0; i<=10; i++) {
+            System.out.println(Series.factorial(i));
+        }
+        System.out.println("*****************************");
+        for(int i=0; i<=10; i++) {
+            System.out.println(Series.fibonacci(i));
+        }
+
+
+        // Write a small program to read an integer from the keyboard
+        // (using Scanner) and print out the times table for that number.
+        // The table should run from 1 to 12.
+        //
+        // You are allowed to use one variable called scanner for your
+        // Scanner instance. You can use as many other variables as you
+        // need, but they must must all be called x. That includes any
+        // class instances and loop control variables that you may decide
+        // to use.
+        //
+        // If you use a class, the class can be called X (capital), but
+        // any instances of it must be called x (lower case).
+        //
+        // Any methods you create must also be called x.
+        //
+        // Optional Extra:
+        // Change your program so that ALL variables (including the scanner
+        // instance) are called x.
+
+        X x = new X(new Scanner(System.in));
+        x.x();
     }
 }
